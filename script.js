@@ -1,10 +1,28 @@
-// Entry point for Komorebi Pan Asian Restaurant interactions.
-// You can add JS here later for features like:
-// - Mobile navigation toggle
-// - Scroll-based animations
-// - Form validation for reservations
-
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Komorebi site ready');
+  console.log('Black Lotus Kitchen site ready');
+
+  // Reveal-on-scroll using Intersection Observer
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+      }
+    );
+
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    // Fallback: show all elements if IntersectionObserver not supported
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
 });
 
