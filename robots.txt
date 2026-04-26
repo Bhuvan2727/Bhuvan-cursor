@@ -1,0 +1,3 @@
+User-agent:*
+Allow:/
+Sitemap: https://bhuvan27.netlify.app/sitemap.xml
